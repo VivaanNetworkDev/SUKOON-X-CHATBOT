@@ -7,7 +7,7 @@
 </p>
 <h1 align ="center"><img src="https://readme-typing-svg.herokuapp.com?color=F778A1&width=350&lines=✨+🦋𝐒𝐔𝐊𝐎𝐎𝐍+𝐗+𝐂𝐡𝐚𝐭+𝐁𝐎𝐓🖤+🥀"></b></h1>
 
-<p align="center"><a href="https://t.me/EliteSid"><img src="https://telegra.ph/file/58afe55fee5ae99d6901b.jpg" width="600"></a></p>
+<p align="center"><a href="https://t.me/EliteSid"><img src="https://files.catbox.moe/otabdy.jpg" width="600"></a></p>
 
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
