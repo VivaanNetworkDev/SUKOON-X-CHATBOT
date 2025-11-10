@@ -10,7 +10,7 @@ lexica-api
 motor
 opencv-python
 openai==0.28.0
-pillow==10.2.0
+pillow==10.0.0
 git+https://github.com/VivaanNetworkDev/pyrogram
 pymongo
 python-dotenv
