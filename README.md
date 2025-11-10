@@ -3,7 +3,7 @@
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 <p align="center">
     <b>ᴠɪsɪᴛᴏʀs</b><br>
- -->    <img align="middle" src="https://profile-counter.glitch.me/VivaanNetworkDev/count.svg" />
+ -->    <img align="middle" src="https://komarev.com/ghpvc/?username=VivaanNetworkDev&style=flat-square" />
 </p>
 <h1 align ="center"><img src="https://readme-typing-svg.herokuapp.com?color=F778A1&width=350&lines=✨+🦋𝐒𝐔𝐊𝐎𝐎𝐍+𝐗+𝐂𝐡𝐚𝐭+𝐁𝐎𝐓🖤+🥀"></b></h1>
 
