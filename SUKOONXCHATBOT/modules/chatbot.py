@@ -1,11 +1,11 @@
 import random
 import logging
+import openai  # Legacy import for compatibility (v0.28.x)
 from pymongo import MongoClient
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction
 from pyrogram.errors import ChannelPrivate
 from pyrogram.types import InlineKeyboardMarkup, Message
-from openai import OpenAI
 from config import MONGO_URL, GPT_API
 from SUKOONXCHATBOT import app
 from SUKOONXCHATBOT.modules.helpers import CHATBOT_ON
@@ -15,7 +15,13 @@ from Abg.chat_status import adminsOnly
 mongo_client = MongoClient(MONGO_URL)
 chatai = mongo_client["Word"]["WordDb"]  # Responses DB
 sukoon = mongo_client["SukoonDb"]["Sukoon"]  # Enabled/Disabled DB
-ai_client = OpenAI(api_key=GPT_API) if GPT_API else None
+
+# Setup OpenAI (legacy v0.28.x compatible)
+if GPT_API:
+    openai.api_key = GPT_API
+    ai_enabled = True
+else:
+    ai_enabled = False
 
 logger = logging.getLogger(__name__)
 
@@ -94,9 +100,9 @@ async def _handle_message(client: Client, message: Message, is_group: bool):
         logger.debug(f"DB response sent for key: {input_key}")
     else:
         # FALLBACK: AI for text (100% accuracy guarantee), simple for stickers
-        if message.text and ai_client:
+        if message.text and ai_enabled:
             try:
-                response = ai_client.chat.completions.create(
+                response = openai.ChatCompletion.create(
                     model="gpt-3.5-turbo",
                     messages=[
                         {"role": "system", "content": "You are Sukoon, a witty, helpful, and fun Telegram chatbot. Keep responses short, engaging, and under 200 characters. Respond in a casual, friendly tone."},
