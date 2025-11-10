@@ -36,7 +36,7 @@ async def chaton_(_, m: Message):
 
 # Consolidated group handler (text or sticker, skips commands/bots)
 @app.on_message(
-    filters.group & (filters.text | filters.sticker) & ~filters.bot & ~filters.command, group=4
+    filters.group & (filters.text | filters.sticker) & ~filters.bot() & ~filters.command(), group=4
 )
 async def handle_group(client: Client, message: Message):
     # Extra prefix check for safety (in case filter misses)
@@ -50,7 +50,7 @@ async def handle_group(client: Client, message: Message):
 
 # Consolidated private handler (always enabled, text or sticker)
 @app.on_message(
-    filters.private & (filters.text | filters.sticker) & ~filters.bot & ~filters.command, group=4
+    filters.private & (filters.text | filters.sticker) & ~filters.bot() & ~filters.command(), group=4
 )
 async def handle_private(client: Client, message: Message):
     # Extra prefix check
