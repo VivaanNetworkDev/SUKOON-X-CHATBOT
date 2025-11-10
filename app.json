@@ -48,6 +48,10 @@
       "value": "",
       "required": true
     },
+    "RAPIDAPI_KEY": {
+      "description": "RapidAPI key for BIN lookup (optional).",
+      "required": false
+    },
     "SUPPORT_GROUP": {
       "description": "Name of the support group",
       "required": true,

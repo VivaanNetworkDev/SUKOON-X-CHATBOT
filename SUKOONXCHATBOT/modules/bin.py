@@ -2,6 +2,8 @@ import requests
 from pyrogram import *
 from pyrogram.types import *
 from SUKOONXCHATBOT import app
+from config import RAPIDAPI_KEY
+
 @app.on_message(filters.command(["bin", "ccbin", "bininfo"], [".", "!", "/"]))
 async def check_ccbin(client, message):
     if len(message.command) < 2:
@@ -13,15 +15,19 @@ async def check_ccbin(client, message):
     except:
         pass
     aux = await message.reply_text("<b>Checking ...</b>")
-    bin = message.text.split(None, 1)[1]
-    if len(bin) < 6:
+    bin_code = message.text.split(None, 1)[1]
+    if len(bin_code) < 6:
         return await aux.edit("<b>❌ Wrong Bin❗...</b>")
     
     url = "https://bin-ip-checker.p.rapidapi.com/"
-    querystring = {"bin": bin}
+    querystring = {"bin": bin_code}
+
+    if not RAPIDAPI_KEY:
+        return await aux.edit("<b>RapidAPI key missing. Set RAPIDAPI_KEY in environment to use BIN lookup.</b>")
+
     headers = {
         "content-type": "application/json",
-        "X-RapidAPI-Key": "923bca7ccdmsh620363d2a9cf295p15f78bjsnfa1040c941aa",
+        "X-RapidAPI-Key": RAPIDAPI_KEY,
         "X-RapidAPI-Host": "bin-ip-checker.p.rapidapi.com"
     }
     
@@ -36,7 +42,7 @@ async def check_ccbin(client, message):
 
 <b>┏━◆</b>
 <b>┣〖🏦 ʙᴀɴᴋ</b> ⇾<tt>{bin_info.get('issuer', {}).get('name', 'N/A')}</tt>
-<b>┣〖💳 ʙɪɴ</b> ⇾<tt>`{bin}`</tt>
+<b>┣〖💳 ʙɪɴ</b> ⇾<tt>`{bin_code}`</tt>
 <b>┣〖🏡 ᴄᴏᴜɴᴛʀʏ</b> ⇾<tt>{bin_info.get('country', {}).get('country', 'N/A')}</tt>
 <b>┣〖🇮🇳 ғʟᴀɢ</b> ⇾<tt>{bin_info.get('country', {}).get('alpha2', 'N/A')}</tt>
 <b>┣〖🧿 ɪsᴏ</b> ⇾<tt>{bin_info.get('country', {}).get('alpha3', 'N/A')}</tt>
